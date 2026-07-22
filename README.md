@@ -1,0 +1,1 @@
+# Wordly-SPA-Dictionary
