@@ -24,8 +24,7 @@ async function handleSearch(e) {
     resultsContainer.innerHTML = '<p>Please enter a word to search.</p>';
     return;
   }
-
-  try {
+try {
     //Gives instant visual feedback while the API processes the request.
     resultsContainer.innerHTML = '<p>Loading...</p>';
     // the encodeURIComponent converts spaces into URL-friendly format, ensuring the API request is valid even if the word contains spaces or special characters.
@@ -35,8 +34,7 @@ async function handleSearch(e) {
       resultsContainer.innerHTML = '<p>Word not found. Please try another word.</p>';
       return;
     }
-
-    const data = await response.json();
+ const data = await response.json();
     displayResults(data, word);
     addToHistory(word);
     searchInput.value = '';
@@ -45,7 +43,6 @@ async function handleSearch(e) {
 resultsContainer.innerHTML = '<p>Error fetching word. Please try again.</p>';
   }
 }
-
 // Extract and display data on the screen
 function displayResults(data, searchedWord) {
   const wordData = data[0];
@@ -64,7 +61,6 @@ function displayResults(data, searchedWord) {
   const audioEntry = wordData.phonetics?.find(p => p.audio && p.audio.length > 0);
   const audioUrl = audioEntry ? audioEntry.audio : null;
 
-  
   // build a HTML button if audio exists, or a short text message if it doesn't.
   const audioHtml = audioUrl
     //if true
